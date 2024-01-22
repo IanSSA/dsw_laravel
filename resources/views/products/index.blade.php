@@ -9,22 +9,24 @@
 
     <div class="row">
         <div class="col-md-6 col-lg-4 mb-2">
-            <form action="{{ route('home.index')}}" method="POST">
+            <form action="{{ route('products.show', ['id'=> 1])}}" method="POST">
                 @method('GET')
                 <img src="{{ asset("/img/game.png") }}" class="img-fluid rounded">
                 <button class="btn bg-primary text-white" href="{{ route('home.index') }}">Game</button>
             </form>
         </div>
         <div class="col-md-6 col-lg-4 mb-2">
-            <form action="{{ route('home.index')}}" method="POST">
+            <form action="{{ route('products.show', ['id'=> 2])}}" method="POST">
                 @method('GET')
                 <img src="{{ asset("/img/safe.png") }}" class="img-fluid rounded">
                 <button class="btn bg-primary text-white">Safe</button>
             </form>
         </div>
         <div class="col-md-6 col-lg-4 mb-2">
-            <img src="{{ asset("/img/submarine.png") }}" class="img-fluid rounded">
-            <button class="btn bg-primary text-white">Submarine</button>
+            <form action="{{ route('products.show', ['id'=> 3])}}" method="POST">
+                @method('GET')
+                <img src="{{ asset("/img/submarine.png") }}" class="img-fluid rounded">
+                <button class="btn bg-primary text-white">Submarine</button>
         </div>
     </div>
 
