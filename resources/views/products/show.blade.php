@@ -8,10 +8,10 @@
 @section('content')
     <div>
         <div class="col-md-6 col-lg-4 mb-2" style="column-count: 2">
-            <img src="{{ asset('/img/'. $viewData['producto'][0])}}" class="img-fluid rounded">
+            <img src="{{ asset('/img/'. $viewData['producto']['pic_name'])}}" class="img-fluid rounded">
             <div>
-                <label>Nombre: {{$viewData['producto'][1]}}</label> <br>
-                <label>Precio: {{$viewData['producto'][2]}}</label>
+                <label>Nombre: {{$viewData['producto']["nombre_completo"]}}</label> <br>
+                <label>Precio: {{$viewData['producto']["precio"]}}</label>
             </div>
     </div>
 

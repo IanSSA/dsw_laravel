@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,11 +23,7 @@ class ProductController extends Controller
         $viewData["subtitle"] =  "Productos";
         $viewData["description"] =  "Esta es la página acerca de ...";
         $viewData["author"] = "Desarrollado por: DSW";
-        $productos = array(
-            array('game.png','Videojuego',100), 
-            array('safe.png','Caja fuerte',250),
-            array('submarine.png','submarino',5300));
-        $viewData["producto"] = $productos[$id-1];
+        $viewData["producto"] = Product::find($id);
         return view("products.show")->with("viewData", $viewData);
     }
 }
