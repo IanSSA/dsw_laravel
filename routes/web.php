@@ -20,3 +20,7 @@ Route::get("/about", "App\Http\Controllers\HomeController@about")->name("home.ab
 Route::get("/products", "App\Http\Controllers\ProductController@products")->name("products.index");
 
 Route::get("/products/{id}", "App\Http\Controllers\ProductController@show")->name("products.show");
+
+Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
+Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name("admin.product.index");
+Route::post('/admin/new_products', 'App\Http\Controllers\Admin\AdminProductController@newproduct')->name("admin.product.index");
