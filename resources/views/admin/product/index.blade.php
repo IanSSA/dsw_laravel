@@ -15,7 +15,7 @@
         </ul>
       </div>
     @endif
-    <form method="POST" action="{{ route('admin.product.create') }}">
+    <form method="POST" action="{{ route('admin.product.create') }}" enctype="multipart/form-data">
       @csrf
       <div class="row">
         <div class="col">
@@ -38,6 +38,10 @@
       <div class="mb-3">
         <label class="form-label">Descripción</label>
         <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Imagen del producto</label>
+        <input name="imagen" id="imagen" type="file" class="form-control">
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
