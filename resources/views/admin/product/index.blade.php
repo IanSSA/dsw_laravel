@@ -6,7 +6,15 @@
     Crear producto
   </div>
   <div class="card-body">
-
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $errors)
+              <li>{{$errors}}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
     <form method="POST" action="{{ route('admin.product.create') }}">
       @csrf
       <div class="row">
@@ -51,12 +59,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>[ ID ]</td>
-          <td>[ NOMBRE ]</td>
-          <td><a href="#">Editar</a></td>
-          <td><a href="#">Eliminar</a></td>
-        </tr>
+        @foreach ($viewData['products'] as $product)
+          <tr>
+            <td>{{$product["id"]}}</td>
+            <td>{{$product["nombre_completo"]}}</td>
+            <td><a href="#">Editar</a></td>
+            <td><a href="#">Eliminar</a></td>
+          </tr>
+        @endforeach
       </tbody>
     </table>
   </div>
