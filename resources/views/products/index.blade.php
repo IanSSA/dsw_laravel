@@ -13,7 +13,7 @@
             <form action="{{ route('products.show', ['id'=> $product['id']])}}" method="POST">
                 @method('GET')
                 <img src="{{ asset("storage/{$product['pic_name']}") }}" class="img-fluid rounded">
-                <button class="btn bg-primary text-white" href="{{ route('home.index') }}">Game</button>
+                <button class="btn bg-primary text-white" href="{{ route('home.index') }}">{{$product['nombre_completo']}}</button>
             </form>
         </div>
         @endforeach
