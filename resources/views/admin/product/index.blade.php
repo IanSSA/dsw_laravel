@@ -68,7 +68,7 @@
             <td>{{$product["id"]}}</td>
             <td>{{$product["nombre_completo"]}}</td>
             <td><a href="#">Editar</a></td>
-            <td><a href="#">Eliminar</a></td>
+            <td><a href="{{ route('admin.product.eliminar', ['id'=> $product['id']])}}">Eliminar</a></td>
           </tr>
         @endforeach
       </tbody>

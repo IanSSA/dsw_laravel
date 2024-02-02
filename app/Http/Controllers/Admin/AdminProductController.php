@@ -31,10 +31,18 @@ class AdminProductController extends Controller
         $imagen = $Request->file("imagen");
         $pic_name = time().'.'.$imagen->extension();
         
-        //Storage::disk("public")->put($pic_name,file_get_contents($imagen));
         $path = $imagen->storeAs('public', $pic_name);
         $new_product->pic_name = $pic_name;
         $new_product->save();
+        $viewData["title"] = "Admin Page - Products - Online Store";
+        $viewData["products"] = Product::all();
+        return view('admin.product.index')->with("viewData", $viewData);
+    }
+
+    public function eliminar($id)
+    {
+        Product::destroy($id);
+        $viewData = [];
         $viewData["title"] = "Admin Page - Products - Online Store";
         $viewData["products"] = Product::all();
         return view('admin.product.index')->with("viewData", $viewData);
