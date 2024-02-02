@@ -30,7 +30,9 @@ class AdminProductController extends Controller
         $new_product->precio = $Request->input('price');
         $imagen = $Request->file("imagen");
         $pic_name = time().'.'.$imagen->extension();
-        Storage::disk("public")->put($pic_name,file_get_contents($imagen));
+        
+        //Storage::disk("public")->put($pic_name,file_get_contents($imagen));
+        $path = $imagen->storeAs('public', $pic_name);
         $new_product->pic_name = $pic_name;
         $new_product->save();
         $viewData["title"] = "Admin Page - Products - Online Store";

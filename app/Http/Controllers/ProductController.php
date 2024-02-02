@@ -13,6 +13,7 @@ class ProductController extends Controller
         $viewData["subtitle"] =  "Productos";
         $viewData["description"] =  "Esta es la página acerca de ...";
         $viewData["author"] = "Desarrollado por: DSW";
+        $viewData["productos"] = Product::all();
 
         return view("products.index")->with("viewData", $viewData);
     }
