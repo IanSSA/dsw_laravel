@@ -15,14 +15,15 @@
         </ul>
       </div>
     @endif
-    <form method="POST" action="{{ route('admin.product.create') }}" enctype="multipart/form-data">
-      @csrf
+    <form action="{{ route('admin.product.update', ['id'=> $viewData['producto']['id']]) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
       <div class="row">
         <div class="col">
           <div class="mb-3 row">
             <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Nombre:</label>
             <div class="col-lg-10 col-md-6 col-sm-12">
-              <input name="name" id="name" value="" type="text" class="form-control">
+              <input name="name" id="name" value="{{$viewData['producto']["nombre_completo"]}}" type="text" class="form-control">
             </div>
           </div>
         </div>
@@ -30,7 +31,7 @@
           <div class="mb-3 row">
             <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Precio:</label>
             <div class="col-lg-10 col-md-6 col-sm-12">
-              <input name="price" id="price" value="" type="number" class="form-control">
+              <input name="price" id="price" value="{{$viewData['producto']["precio"]}}" type="number" class="form-control">
             </div>
           </div>
         </div>
@@ -40,39 +41,12 @@
         <textarea class="form-control" name="description" id="description" rows="3"></textarea>
       </div>
       <div class="mb-3">
+        <img src="{{ asset("storage/{$viewData['producto']['pic_name']}") }}" class="img-fluid rounded">
         <label for="" class="form-label">Imagen del producto</label>
         <input name="imagen" id="imagen" type="file" class="form-control">
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    Mantenimiento de productos
-  </div>
-  <div class="card-body">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Editar</th>
-          <th scope="col">Eliminar</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($viewData['products'] as $product)
-          <tr>
-            <td>{{$product["id"]}}</td>
-            <td>{{$product["nombre_completo"]}}</td>
-            <td><a href="{{ route('admin.product.editar', ['id'=> $product['id']])}}">Editar</a></td>
-            <td><a href="{{ route('admin.product.eliminar', ['id'=> $product['id']])}}">Eliminar</a></td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
   </div>
 </div>
 @endsection
